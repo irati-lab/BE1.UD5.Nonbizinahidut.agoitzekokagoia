@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD5. Non bizi nahi dut? - Agoitz 2030</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: #0f172a;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Refined dynamic aesthetics */
+        .brutal-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(15, 23, 42, 1);
+        }
+        .brutal-shadow-sm {
+            box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1);
+        }
+        .brutal-shadow:active, .brutal-shadow-sm:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(15, 23, 42, 1);
+        }
+        .paper-edge {
+            border-radius: 2px 15px 2px 15px;
+        }
+        .paper-edge-alt {
+            border-radius: 15px 2px 15px 2px;
+        }
+        .nav-button {
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        .nav-button.active {
+            border: 2px solid #0f172a;
+            border-bottom: 2px solid transparent;
+            transform: translateY(2px);
+            z-index: 10;
+        }
+        .rubric-table th, .rubric-table td {
+            border: 2px solid #0f172a;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-cyan-400 border-b-4 border-slate-900 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 bg-white px-4 py-2 border-2 border-slate-900 brutal-shadow-sm">
+                <i data-lucide="zap" class="w-7 h-7 text-yellow-500 fill-yellow-500"></i>
+                <div>
+                    <h1 class="text-xl font-black tracking-widest uppercase text-slate-900">Agoitz 2030</h1>
+                    <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">UD5. Non bizi nahi dut?</p>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="flex space-x-2 overflow-x-auto w-full md:w-auto pb-1 scrollbar-hide items-end mt-2 md:mt-0">
+                <button onclick="openTab('saioa1', this)" class="nav-button active bg-yellow-300 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-yellow-400">
+                    <div class="flex items-center gap-2"><i data-lucide="eye" class="w-4 h-4"></i> 1. Arazoa</div>
+                </button>
+                <button onclick="openTab('saioa2', this)" class="nav-button bg-pink-300 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-pink-400">
+                    <div class="flex items-center gap-2"><i data-lucide="brush" class="w-4 h-4"></i> 2. Ekintza</div>
+                </button>
+                <button onclick="openTab('ebaluazioa', this)" class="nav-button bg-purple-300 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-purple-400">
+                    <div class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4"></i> Ebaluazioa</div>
+                </button>
+                <button onclick="openTab('bozketa', this)" class="nav-button bg-orange-400 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-orange-500">
+                    <div class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4"></i> Bozketa (Sariak)</div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-10 w-full">
+
+        <!-- 1. SAIOA -->
+        <section id="saioa1" class="tab-content active">
+            
+            <div class="text-center mb-12">
+                <div class="inline-block bg-slate-900 text-white px-4 py-1 font-black text-lg tracking-widest uppercase brutal-shadow-sm mb-4">Gure espazio publikoa arriskuan!</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-2 max-w-2xl mx-auto leading-tight">Zer ari da gertatzen Agoitzeko ikastetxearen inguruan? Irakurri albisteak.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- News Item 1 -->
+                <div class="bg-white border-2 border-slate-900 brutal-shadow p-6 paper-edge relative transition-transform hover:-translate-y-1">
+                    <div class="border-b-2 border-slate-900 pb-2 mb-4">
+                        <span class="font-black text-red-600 uppercase text-xs tracking-widest">Diario de Noticias | Iruñea</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 leading-tight uppercase text-slate-900">Agoitzek usain txarreko arazo bat du: 'kagoi' lotsagabe baten biktimak</h3>
+                    <p class="text-lg font-bold bg-yellow-200 inline px-1">"Udalak ekintza 'osasungaitz eta iraingarri' bat salatu du..."</p>
+                    <p class="text-slate-800 mt-4 font-medium leading-relaxed">Agoitzeko Udalak ezusteko gertaera desatsegin baten berri eman du: azken egunotan hainbat giza gorotz aurkitu dituzte udalerriko ikastetxetik gertu dagoen banku batean.</p>
+                    <div class="my-5 p-4 border-l-4 border-slate-900 bg-cyan-50 font-bold text-lg italic text-slate-700">
+                        “Espazio publikoak zaintzea guztion erantzukizuna da” - Agoizko Udala
+                    </div>
+                    <p class="text-slate-800 font-medium text-sm">Udalaren komunikatuak ez du haserrea ezkutatzen jokabide "gizalegearen aurkakotzat" jotzen duenaren aitzinean. Bien bitartean, Udalak azpimarratu du udalerriko bankuak esertzeko daudela, ez bestelako beharretarako.</p>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="bg-white border-2 border-slate-900 brutal-shadow p-6 paper-edge-alt relative transition-transform hover:-translate-y-1">
+                    <div class="border-b-2 border-slate-900 pb-2 mb-4">
+                        <span class="font-black text-red-600 uppercase text-xs tracking-widest">Diario de Navarra | Aser Vidondo</span>
+                    </div>
+                    <!-- Prentsa Argazkia -->
+                    <div class="w-full h-56 relative overflow-hidden border-2 border-slate-900 mb-4 bg-slate-200">
+                        <img src="https://imagenes.diariodenavarra.es/uploads/2025/10/21/68f7a00e0b9ae.jpeg" alt="Agoitzeko bankua" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute bottom-2 right-2 bg-slate-900 text-white text-xs px-2 py-1 font-bold uppercase tracking-wider">#Arazoa</div>
+                    </div>
+                    <p class="text-slate-800 font-medium mb-4 leading-relaxed">Agoizko Udalak 'nahikoa da' esan du azken egunotan eskola eremuan gertatutako <strong class="bg-pink-200 px-1">jokabide gizalegearen aurkako eta nazkagarri</strong> baten aitzinean.</p>
+                    <p class="text-slate-800 font-medium text-sm">"Gertaera hau, osasungaitza eta iraingarria izateaz gain, eskola-ingurunearekiko eta bizilagun guztiekiko errespetu falta da". Udalak ikerketa bat irekiko duela baieztatu du arduraduna identifikatzeko.</p>
+                </div>
+            </div>
+
+            <!-- Debate Section -->
+            <div class="bg-purple-100 border-2 border-slate-900 brutal-shadow p-8 mb-16 relative">
+                <div class="absolute -top-5 -right-5 bg-yellow-400 border-2 border-slate-900 w-12 h-12 rounded-full flex items-center justify-center brutal-shadow-sm z-10">
+                    <i data-lucide="message-circle" class="w-6 h-6 text-slate-900"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-6 uppercase tracking-wider text-slate-900 border-b-2 border-slate-900 pb-2 inline-block">Klaseko eztabaida</h3>
+                
+                <div class="grid md:grid-cols-2 gap-4 mt-2">
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-purple-700 mb-2">1. Zergatik da "errespetu falta"?</p>
+                        <p class="text-slate-700 font-medium text-sm">Zikinkeria hutsa izatetik haratago, zein arau etiko apurtzen ari da pertsona hau?</p>
+                    </div>
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-cyan-700 mb-2">2. Norena da banku hori?</p>
+                        <p class="text-slate-700 font-medium text-sm">Udalarena? Ikastetxearena? Denona? "Publikoa" izateak zer esan nahi du?</p>
+                    </div>
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-pink-700 mb-2">3. Nori eragiten dio honek?</p>
+                        <p class="text-slate-700 font-medium text-sm">Pentsatu enpatiaz: Eskolako umeak, gurasoak, garbitzaileak... Nola sentitzen dira?</p>
+                    </div>
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-yellow-600 mb-2">4. Zer egin dezakegu herritarrok?</p>
+                        <p class="text-slate-700 font-medium text-sm">Udalaren zeregina zigortzea bada, zein izan beharko litzateke gure zeregina hezteko?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Section -->
+            <div class="bg-green-500 border-2 border-slate-900 brutal-shadow p-8 md:p-10 relative mt-8">
+                <div class="absolute -top-4 left-8 bg-white border-2 border-slate-900 px-4 py-1 font-black uppercase tracking-wider">
+                    Gaurko Misioa
+                </div>
+                
+                <h3 class="text-3xl font-black uppercase tracking-widest text-slate-900 mb-6 mt-4">GKE baten sorrera</h3>
+                
+                <p class="text-slate-900 font-bold text-lg mb-6 bg-white p-3 border-2 border-slate-900 inline-block brutal-shadow-sm">
+                    Talde kooperatiboetan, <strong>Tokiko Talde Ekologista</strong> berri bat sortuko duzue Agoitzen.
+                </p>
+                
+                <div class="bg-yellow-50 border-2 border-slate-900 p-6 paper-edge">
+                    <h4 class="font-black text-xl mb-4 border-b-2 border-slate-900 pb-2 flex items-center gap-3">
+                        <i data-lucide="edit-3" class="text-red-500 w-5 h-5"></i> Taldearen txostena (Folioan betetzeko)
+                    </h4>
+                    
+                    <div class="space-y-4 font-medium text-slate-800">
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-900 text-white w-6 h-6 flex items-center justify-center font-black rounded-full shrink-0 text-sm mt-1">1</div>
+                            <div>
+                                <strong class="text-lg uppercase tracking-wide">Nortasuna:</strong> Asmatu taldearen izena, logoaren zirriborroa, eslogan bat eta harremanetarako datu faltsuak (emaila/telefonoa).
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-900 text-white w-6 h-6 flex items-center justify-center font-black rounded-full shrink-0 text-sm mt-1">2</div>
+                            <div>
+                                <strong class="text-lg uppercase tracking-wide">Analisi etikoa:</strong> Zergatik da hau arazo sozial bat? Zergatik den garrantzitsua espazio publikoa zaintzea idatzi.
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-900 text-white w-6 h-6 flex items-center justify-center font-black rounded-full shrink-0 text-sm mt-1">3</div>
+                            <div>
+                                <strong class="text-lg uppercase tracking-wide">Gure soluzioa:</strong> Zer egingo du zuen elkarteak hau konpontzeko? Egon sortzaileak!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <span class="bg-slate-900 text-white font-bold tracking-widest uppercase px-6 py-3 border-2 border-slate-900 brutal-shadow-sm inline-block">
+                        Txosten hau gaur klase amaieran irakasleari eman
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SAIOA -->
+        <section id="saioa2" class="tab-content">
+             <div class="mb-12 text-center">
+                <div class="inline-block bg-pink-300 text-slate-900 px-4 py-1 font-black text-sm tracking-widest uppercase brutal-shadow-sm mb-4">Sorkuntza fasea</div>
+                <h2 class="text-4xl font-black text-slate-900 mb-4 uppercase tracking-tight">Ekin diezaiogun lanari</h2>
+                <p class="text-lg font-bold text-slate-600 max-w-2xl mx-auto">Atzoko ideiak hartu eta errealitate bihurtzeko garaia iritsi da.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Instructions -->
+                <div class="lg:w-2/3">
+                    <div class="bg-white border-2 border-slate-900 brutal-shadow p-8 paper-edge-alt h-full">
+                        <h3 class="text-2xl font-black mb-6 text-slate-900 border-b-2 border-pink-400 pb-2 inline-block uppercase tracking-wider">Kartel sentsibilizatzailea</h3>
+                        <p class="mb-6 font-medium text-slate-700">Zuen GKE-aren kartel ofiziala diseinatu behar duzue. Aukeratu formatua:</p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                            <div class="bg-cyan-50 border-2 border-slate-900 p-6 text-center brutal-shadow-sm transition-transform hover:-translate-y-1 cursor-pointer">
+                                <i data-lucide="monitor" class="w-10 h-10 mx-auto text-cyan-600 mb-3"></i>
+                                <h4 class="font-black text-lg uppercase tracking-wider">Digitala</h4>
+                                <p class="font-medium text-slate-600 mt-2 text-sm">Canva edo Google Slides erabiliz diseinatu.</p>
+                            </div>
+                            <div class="bg-orange-50 border-2 border-slate-900 p-6 text-center brutal-shadow-sm transition-transform hover:-translate-y-1 cursor-pointer">
+                                <i data-lucide="scissors" class="w-10 h-10 mx-auto text-orange-600 mb-3"></i>
+                                <h4 class="font-black text-lg uppercase tracking-wider">Eskuz</h4>
+                                <p class="font-medium text-slate-600 mt-2 text-sm">Kartulinak, errotuladoreak eta argazkiak erabiliz.</p>
+                            </div>
+                        </div>
+
+                        <h4 class="font-black text-xl mb-4 bg-yellow-300 inline-block px-2 border-2 border-slate-900">Kartelak eduki behar duena:</h4>
+                        <ul class="space-y-3 font-medium pl-2 text-slate-800">
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Zuen marka:</strong> Izena eta logoa.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Eslogana:</strong> Lelo nagusia, hizki handietan.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Testuingurua:</strong> Albistearen aipamena edo irudia.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Soluzioa:</strong> Herritarrei zuzendutako mezu etiko bat.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Kontaktua:</strong> Beheko aldean, emaila/telefonoa.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Submission Box -->
+                <div class="lg:w-1/3 flex flex-col gap-6">
+                    <div class="bg-yellow-300 border-2 border-slate-900 brutal-shadow p-6">
+                        <div class="flex items-center justify-between mb-4 border-b-2 border-slate-900 pb-2">
+                            <h4 class="font-black text-xl uppercase tracking-wider">Entregatzeko</h4>
+                            <i data-lucide="upload" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-bold mb-4 text-sm text-slate-800">Klase amaieran entregatu ebaluatzeko:</p>
+                        <ul class="font-medium space-y-3 mb-2 bg-white border-2 border-slate-900 p-4 text-sm">
+                            <li><span class="font-black text-cyan-700 uppercase">Digitala:</span> Igo Google Classroom-era.</li>
+                            <li><span class="font-black text-orange-700 uppercase">Fisikoa:</span> Ordezko irakasleari eskuan eman.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900 text-white border-2 border-slate-900 brutal-shadow p-6 relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 opacity-10">
+                            <i data-lucide="star" class="w-32 h-32 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <h4 class="font-black text-xl mb-3 text-yellow-400 uppercase tracking-wider relative z-10">Saritutako lanak</h4>
+                        <p class="font-medium text-sm text-slate-300 relative z-10 leading-relaxed">Lanik argienak eta sortzaileenak sari berezia izango dute: bozketa irabazten duen taldeak <strong class="text-yellow-400">+1 puntu</strong> lortuko du nota finalean, eta bigarrenak <strong class="text-yellow-400">+0.5 puntu</strong> gehigarri!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EBALUAZIOA -->
+        <section id="ebaluazioa" class="tab-content">
+            <div class="mb-10 text-center">
+                <div class="inline-block bg-purple-200 text-purple-900 px-4 py-1 font-black text-sm tracking-widest uppercase brutal-shadow-sm mb-4">Errubrika</div>
+                <h2 class="text-4xl font-black text-slate-900 mb-2 uppercase tracking-tight">Nola lortu bikain bat?</h2>
+            </div>
+
+            <!-- Context Info -->
+            <div class="flex flex-col md:flex-row gap-6 mb-8">
+                <div class="bg-white border-2 border-slate-900 brutal-shadow-sm p-5 flex-1">
+                    <h4 class="font-black text-lg text-purple-700 mb-2 uppercase tracking-wider border-b-2 border-purple-200 inline-block">Irizpideak (LOMLOE)</h4>
+                    <p class="font-medium text-slate-700 mt-2 text-sm leading-relaxed grid grid-cols-2 gap-x-2">
+                        <span><strong class="text-purple-900">1.1:</strong> Hausnarketa etikoa.</span>
+                        <span><strong class="text-purple-900">1.2:</strong> Enpatia eta ulermena.</span>
+                        <span><strong class="text-purple-900">2.1:</strong> Herritartasun aktiboa.</span>
+                        <span><strong class="text-purple-900">2.2:</strong> Gatazken konponbidea.</span>
+                        <span><strong class="text-purple-900">3.3:</strong> Espazio publikoaren zaintza.</span>
+                        <span><strong class="text-purple-900">4.1:</strong> Ingurunearekiko arreta.</span>
+                    </p>
+                </div>
+                <div class="bg-white border-2 border-slate-900 brutal-shadow-sm p-5 flex-1">
+                    <h4 class="font-black text-lg text-cyan-700 mb-2 uppercase tracking-wider border-b-2 border-cyan-200 inline-block">Konpetentziak</h4>
+                    <p class="font-medium text-slate-700 mt-2 text-sm leading-relaxed">
+                        <strong class="text-cyan-900">HKK1/2:</strong> Mezu argiak sortzea.<br>
+                        <strong class="text-cyan-900">KPSII1:</strong> Talde-lana.<br>
+                        <strong class="text-cyan-900">KKAK3:</strong> Sormena eta adierazpen artistikoa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Rubric Table -->
+            <div class="bg-white border-2 border-slate-900 brutal-shadow overflow-x-auto">
+                <table class="w-full text-left border-collapse rubric-table min-w-[800px]">
+                    <thead>
+                        <tr>
+                            <th class="p-4 bg-slate-100 font-black text-sm uppercase tracking-wider w-1/5">Zer ebaluatzen da?</th>
+                            <th class="p-4 text-center bg-cyan-300 font-black text-sm uppercase tracking-wider">Bikain (4)</th>
+                            <th class="p-4 text-center bg-green-300 font-black text-sm uppercase tracking-wider">Oso Ondo (3)</th>
+                            <th class="p-4 text-center bg-yellow-300 font-black text-sm uppercase tracking-wider">Nahikoa (2)</th>
+                            <th class="p-4 text-center bg-red-300 font-black text-sm uppercase tracking-wider">Hobetu (1)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-medium text-sm text-slate-800">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Arazoaren azterketa etikoa</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(1.1 Irizpidea)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Arazoaren sustrai etikoak oso sakon eta arrazoituta identifikatu dituzte.</td>
+                            <td class="p-4">Arazoa ongi identifikatu dute ikuspuntu etikotik, baina sakontasun apur bat falta da.</td>
+                            <td class="p-4">Arazoa zikinkeria edo arau-hauste hutsa balitz bezala tratatzen dute.</td>
+                            <td class="p-4">Ez dute arazoaren dimentsio etikoa identifikatu edo ulertu.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Enpatia eta besteen ulermena</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(1.2 Irizpidea)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Inplikatutako pertsona guztien (ikasle, bizilagun, garbitzaile) sentimenduak oso ongi ulertu eta jaso dituzte.</td>
+                            <td class="p-4">Enpatia erakusten dute, baina pertsona talde zehatz batean bakarrik zentratu dira.</td>
+                            <td class="p-4">Beste pertsonen ikuspuntua eta emozioak oso gainazaletik aipatzen dituzte.</td>
+                            <td class="p-4">Ez dago enpatiarik edota ikuspuntu bakarra hartzen dute kontuan.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Herritartasun aktiboa</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(2.1 Irizpidea)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Udalarentzako edo herritarrentzako ekintza-plan oso argia, bideragarria eta sortzailea proposatu dute.</td>
+                            <td class="p-4">Proposamena egokia da, baina ez da guztiz garatu edo nahiko ohikoa da.</td>
+                            <td class="p-4">Proposamena oso lausoa da edo ez du parte-hartze aktiboa argi bultzatzen.</td>
+                            <td class="p-4">Ez dago proposamen edo ekintza plan zehatzik arazoari aurre egiteko.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Gatazken konponbide etikoa</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(2.2 Irizpidea)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Konponbideak hezkuntza, errespetua eta elkarrizketa bilatzen ditu, zigor hutsetik haratago.</td>
+                            <td class="p-4">Konponbideak helburu ona du, baina neurri zigortzaileetara jotzeko joera du apur bat.</td>
+                            <td class="p-4">Konponbidea ia erabat zigorrean edo isunetan oinarritzen da, balioak landu gabe.</td>
+                            <td class="p-4">Proposatutako soluzioak ez du gatazka modu etiko edo baketsuan konpontzen.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Espazio publikoaren zaintza</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(3.3 Irizpidea)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Espazio publikoaren zaintza eta denon onura zuzenean eta argi sustatzen dituzte beren mezuarekin.</td>
+                            <td class="p-4">Espazio publikoaren ideia aipatzen da, baina ez da kanpainaren mezu nagusia.</td>
+                            <td class="p-4">Espazio publikoa "udalarena" balitz bezala tratatzen dute, ez "denona" bezala.</td>
+                            <td class="p-4">Ez da espazio publikoaren edo ondasun komunen zaintzarik sustatzen.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Ingurunearekiko arreta</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(4.1 Irizpidea)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Ingurunearekiko (ikastetxea, herria) begirune eta zaintza jarrera ezin hobea erakusten dute.</td>
+                            <td class="p-4">Ingurunearen zaintza baloratzen dute, baina modu teorikoan soilik adierazten dute.</td>
+                            <td class="p-4">Ingurunearen aipamen oso urria edo hotza egiten dute.</td>
+                            <td class="p-4">Ingurunea zaintzeko edo errespetatzeko jarrera falta nabarmena da.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Sormena eta formatua</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(KKAK3, HKK1/2)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Inpaktu bisual handia. Logoa, eslogana eta diseinua bikainak. Ortografia akatsik gabe.</td>
+                            <td class="p-4">Kartela txukuna da eta elementu guztiak ditu. Sormen pixka bat erakusten du. Testua zuzena da.</td>
+                            <td class="p-4">Elementuren bat falta da. Diseinua presaka eginda dagoela dirudi. Akats ortografikoak dituzte.</td>
+                            <td class="p-4">Kartela oso sinplea da, osatu gabea dago edo mezua ulertezina da. Formatu falta nabarmenak.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50 border-b-2 border-slate-900">
+                                <span class="font-bold">Talde-lana eta jarrera</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(KPSII1)</span>
+                            </td>
+                            <td class="p-4 font-semibold border-b-2 border-slate-900">Guztiek aktiboki parte hartu dute. Autonomia osoz eta errespetuz lan egin dute.</td>
+                            <td class="p-4 border-b-2 border-slate-900">Gehienek parte hartu dute. Klaseko giroa errespetatu dute lanean ari zirela.</td>
+                            <td class="p-4 border-b-2 border-slate-900">Taldean desorekak egon dira, edo irakasleak arreta deitu behar izan die zentratzeko.</td>
+                            <td class="p-4 border-b-2 border-slate-900">Gatazkak egon dira taldean edo ez dute denbora aprobetxatu.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- BOZKETA -->
+        <section id="bozketa" class="tab-content">
+            <div class="mb-10 text-center">
+                <h2 class="text-4xl font-black text-slate-900 mb-4 uppercase tracking-tight">Proiektuen Bozketa</h2>
+                <div class="bg-white border-2 border-slate-900 p-3 inline-block brutal-shadow-sm mt-2">
+                    <p class="text-lg font-bold text-slate-800 uppercase tracking-wider flex items-center justify-center gap-2">
+                        <i data-lucide="award" class="w-5 h-5 text-yellow-500"></i> Irabazleari +1 puntu eta bigarrenari +0.5 puntu notan <i data-lucide="award" class="w-5 h-5 text-yellow-500"></i>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Voting Form -->
+                <div class="bg-white border-2 border-slate-900 brutal-shadow p-8 relative paper-edge z-10">
+                    <h3 class="text-2xl font-black mb-8 uppercase tracking-wider text-slate-900 border-b-2 border-slate-900 pb-2 flex items-center gap-3">
+                        <i data-lucide="vote" class="w-6 h-6 text-orange-500"></i> Eman botoak
+                    </h3>
+                    
+                    <!-- Error Message Box -->
+                    <div id="voteError" class="hidden bg-red-100 border-2 border-red-500 text-red-800 p-4 mb-6 brutal-shadow-sm" role="alert">
+                        <p class="font-black uppercase text-sm flex items-center gap-2"><i data-lucide="alert-circle" class="w-4 h-4"></i> Arazoa botoekin!</p>
+                        <p id="voteErrorMessage" class="font-medium mt-1 text-sm"></p>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Who is voting -->
+                        <div class="bg-slate-50 border-2 border-slate-200 p-4">
+                            <label class="block text-sm font-black uppercase tracking-wider text-slate-900 mb-2">Zein talde zarete zuek?</label>
+                            <select id="voterTeam" class="w-full p-3 border-2 border-slate-900 bg-white font-bold text-slate-800 cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                <option value="">-- Aukeratu zuen taldea --</option>
+                                <option value="1">1. Taldea</option>
+                                <option value="2">2. Taldea</option>
+                                <option value="3">3. Taldea</option>
+                                <option value="4">4. Taldea</option>
+                                <option value="5">5. Taldea</option>
+                                <option value="6">6. Taldea</option>
+                                <option value="7">7. Taldea</option>
+                            </select>
+                        </div>
+
+                        <!-- 10 Points -->
+                        <div class="flex items-center gap-4 p-4 bg-yellow-100 border-2 border-slate-900 brutal-shadow-sm">
+                            <div class="bg-slate-900 text-yellow-300 font-black w-12 h-12 flex items-center justify-center text-xl shrink-0 border-2 border-white">10</div>
+                            <div class="flex-grow">
+                                <label class="block text-xs font-black uppercase tracking-wider text-slate-900 mb-1">Puntu (Proiektu onenari)</label>
+                                <select id="vote10" class="w-full p-2 border-2 border-slate-900 bg-white font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                    <option value="">-- Nori 10 puntu? --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 8 Points -->
+                        <div class="flex items-center gap-4 p-4 bg-slate-200 border-2 border-slate-900 brutal-shadow-sm">
+                            <div class="bg-slate-900 text-slate-300 font-black w-12 h-12 flex items-center justify-center text-xl shrink-0 border-2 border-white">8</div>
+                            <div class="flex-grow">
+                                <label class="block text-xs font-black uppercase tracking-wider text-slate-900 mb-1">Puntu (Bigarren onenari)</label>
+                                <select id="vote8" class="w-full p-2 border-2 border-slate-900 bg-white font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                    <option value="">-- Nori 8 puntu? --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 4 Points -->
+                        <div class="flex items-center gap-4 p-4 bg-orange-100 border-2 border-slate-900 brutal-shadow-sm">
+                            <div class="bg-slate-900 text-orange-300 font-black w-12 h-12 flex items-center justify-center text-xl shrink-0 border-2 border-white">4</div>
+                            <div class="flex-grow">
+                                <label class="block text-xs font-black uppercase tracking-wider text-slate-900 mb-1">Puntu (Hirugarrenari)</label>
+                                <select id="vote4" class="w-full p-2 border-2 border-slate-900 bg-white font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                    <option value="">-- Nori 4 puntu? --</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button onclick="castVote()" class="w-full bg-slate-900 hover:bg-slate-800 text-white border-2 border-slate-900 font-black py-4 px-6 text-lg uppercase tracking-widest transition-colors brutal-shadow-sm mt-2 flex justify-center items-center gap-3">
+                            Botoak bidali <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="bg-slate-900 border-2 border-slate-900 brutal-shadow p-8 font-sans text-white relative paper-edge-alt">
+                    
+                    <!-- Winner Banner -->
+                    <div id="winnerBanner" class="hidden absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-slate-900 border-2 border-slate-900 py-2 px-6 font-black uppercase text-sm tracking-widest text-center brutal-shadow-sm z-20 whitespace-nowrap">
+                        🏆 1. SARIA: <span id="winnerText1"></span> (+1) | 2. SARIA: <span id="winnerText2"></span> (+0.5) 🏆
+                    </div>
+
+                    <h3 class="text-2xl font-black mb-8 uppercase tracking-wider text-yellow-400 border-b-2 border-yellow-400 pb-2 flex items-center gap-3 relative z-10">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6"></i> Sailkapena
+                    </h3>
+                    
+                    <div class="space-y-4 relative z-10 font-bold" id="leaderboardContainer">
+                        <!-- Leaderboard items injected by JS -->
+                    </div>
+                    
+                    <div class="mt-10 pt-6 border-t-2 border-slate-800 text-center relative z-10">
+                        <p class="text-slate-400 font-black uppercase mb-3 text-xs tracking-widest">Botoa eman duten taldeak:</p>
+                        <div class="flex justify-center gap-2 flex-wrap" id="votedBadges">
+                            <!-- Badges injected by JS -->
+                        </div>
+                        <button onclick="resetVoting()" class="mt-8 text-xs font-bold text-slate-500 hover:text-slate-300 uppercase tracking-widest border-b border-transparent hover:border-slate-500 transition-colors">Bozketa berrabiarazi</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-8 text-center mt-auto border-t-4 border-cyan-400">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="font-black uppercase tracking-widest text-sm">&copy; 2026 Balio Etikoak eta Zibikoak</p>
+            <p class="text-xs mt-2 text-slate-400 font-bold tracking-wider uppercase">DBH 1 - Agoitzeko Institutua</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tab switching logic
+        function openTab(tabName, buttonElement) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'border-slate-900', 'border-transparent');
+                btn.style.border = '2px solid transparent';
+                btn.style.transform = 'translateY(0)';
+            });
+
+            document.getElementById(tabName).classList.add('active');
+
+            buttonElement.classList.add('active');
+            buttonElement.style.border = '2px solid #0f172a';
+            buttonElement.style.borderBottom = '2px solid transparent';
+            buttonElement.style.transform = 'translateY(2px)';
+        }
+
+        // --- VOTING SYSTEM LOGIC ---
+        const NUM_TEAMS = 7;
+        let scores = Array(NUM_TEAMS).fill(0);
+        let hasVoted = Array(NUM_TEAMS).fill(false);
+        
+        function initDropdowns() {
+            const selects = ['vote10', 'vote8', 'vote4'];
+            selects.forEach(id => {
+                const el = document.getElementById(id);
+                while (el.options.length > 1) el.remove(1);
+                for (let i = 1; i <= NUM_TEAMS; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.text = `${i}. Taldea`;
+                    el.add(option);
+                }
+            });
+        }
+
+        function showError(msg) {
+            const errorBox = document.getElementById('voteError');
+            const errorMsg = document.getElementById('voteErrorMessage');
+            errorMsg.innerText = msg;
+            errorBox.classList.remove('hidden');
+            setTimeout(() => {
+                errorBox.classList.add('hidden');
+            }, 5000);
+        }
+
+        function castVote() {
+            const voter = parseInt(document.getElementById('voterTeam').value);
+            const v10 = parseInt(document.getElementById('vote10').value);
+            const v8 = parseInt(document.getElementById('vote8').value);
+            const v4 = parseInt(document.getElementById('vote4').value);
+
+            if (!voter || !v10 || !v8 || !v4) {
+                showError("Bete eremu guztiak botoa emateko.");
+                return;
+            }
+            if (hasVoted[voter - 1]) {
+                showError(`${voter}. Taldeak eman du botoa dagoeneko.`);
+                return;
+            }
+            if (v10 === voter || v8 === voter || v4 === voter) {
+                showError("Ezin diozue zuen buruari botorik eman.");
+                return;
+            }
+            if (v10 === v8 || v10 === v4 || v8 === v4) {
+                showError("Ezin diozue talde berari puntuazio desberdinik eman.");
+                return;
+            }
+
+            scores[v10 - 1] += 10;
+            scores[v8 - 1] += 8;
+            scores[v4 - 1] += 4;
+            hasVoted[voter - 1] = true;
+
+            updateLeaderboard();
+            updateVotedBadges();
+
+            document.getElementById('voterTeam').value = "";
+            document.getElementById('vote10').value = "";
+            document.getElementById('vote8').value = "";
+            document.getElementById('vote4').value = "";
+            
+            const errorBox = document.getElementById('voteError');
+            errorBox.className = "bg-green-100 border-2 border-green-500 text-green-800 p-4 mb-6 brutal-shadow-sm";
+            errorBox.innerHTML = `<p class="font-black uppercase text-sm">Ongi egina!</p><p class="font-medium text-sm mt-1">${voter}. Taldearen botoak gorde dira.</p>`;
+            setTimeout(() => {
+                errorBox.classList.add('hidden');
+                setTimeout(() => {
+                    errorBox.className = "hidden bg-red-100 border-2 border-red-500 text-red-800 p-4 mb-6 brutal-shadow-sm";
+                    errorBox.innerHTML = `<p class="font-black uppercase text-sm flex items-center gap-2"><i data-lucide="alert-circle" class="w-4 h-4"></i> Arazoa botoekin!</p><p id="voteErrorMessage" class="font-medium mt-1 text-sm"></p>`;
+                    lucide.createIcons();
+                }, 500);
+            }, 3000);
+        }
+
+        function updateLeaderboard() {
+            const container = document.getElementById('leaderboardContainer');
+            container.innerHTML = '';
+
+            let sortedTeams = [];
+            for (let i = 0; i < NUM_TEAMS; i++) {
+                sortedTeams.push({ id: i + 1, score: scores[i] });
+            }
+
+            sortedTeams.sort((a, b) => b.score - a.score);
+            const maxScore = sortedTeams[0].score > 0 ? sortedTeams[0].score : 1;
+            
+            const votingComplete = hasVoted.every(v => v === true);
+            const winnerBanner = document.getElementById('winnerBanner');
+            
+            if (votingComplete && sortedTeams[0].score > 0) {
+                document.getElementById('winnerText1').innerText = `${sortedTeams[0].id}. TALDEA`;
+                if(sortedTeams[1].score > 0) {
+                     document.getElementById('winnerText2').innerText = `${sortedTeams[1].id}. TALDEA`;
+                } else {
+                     document.getElementById('winnerText2').innerText = `-`;
+                }
+                winnerBanner.classList.remove('hidden');
+            } else {
+                winnerBanner.classList.add('hidden');
+            }
+
+            sortedTeams.forEach((team, index) => {
+                const widthPercent = (team.score / maxScore) * 100;
+                
+                let barColor = "bg-slate-600";
+                let badgeColor = "bg-slate-700 text-white border-slate-600";
+                let extraBadge = "";
+                
+                if (index === 0 && team.score > 0) { 
+                    barColor = "bg-yellow-400"; 
+                    badgeColor = "bg-yellow-400 text-slate-900 border-white"; 
+                    if(votingComplete) extraBadge = `<span class="absolute -right-2 -top-2 bg-slate-900 text-yellow-400 text-[10px] px-1 py-0.5 border border-slate-900">+1!</span>`;
+                }
+                else if (index === 1 && team.score > 0) { 
+                    barColor = "bg-slate-300"; 
+                    badgeColor = "bg-slate-300 text-slate-900 border-white"; 
+                    if(votingComplete) extraBadge = `<span class="absolute -right-2 -top-2 bg-slate-900 text-white text-[10px] px-1 py-0.5 border border-slate-900">+0.5!</span>`;
+                }
+                else if (index === 2 && team.score > 0) { 
+                    barColor = "bg-orange-400"; 
+                    badgeColor = "bg-orange-400 text-slate-900 border-white"; 
+                }
+
+                const html = `
+                    <div class="flex items-center gap-3 relative">
+                        <div class="w-6 text-right font-black text-slate-500">${index + 1}.</div>
+                        <div class="w-20 font-black text-xs uppercase tracking-wider">${team.id}. Taldea</div>
+                        <div class="flex-grow bg-slate-800 border-2 border-slate-700 h-5 p-0.5">
+                            <div class="${barColor} h-full transition-all duration-1000" style="width: ${team.score === 0 ? '0' : Math.max(widthPercent, 2)}%"></div>
+                        </div>
+                        <div class="${badgeColor} w-10 h-8 flex items-center justify-center border-2 font-black text-sm brutal-shadow-sm relative">
+                            ${team.score}
+                            ${extraBadge}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function updateVotedBadges() {
+            const container = document.getElementById('votedBadges');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < NUM_TEAMS; i++) {
+                if (hasVoted[i]) {
+                    container.innerHTML += `<span class="bg-cyan-400 text-slate-900 px-2 py-1 text-xs font-black border-2 border-slate-900 brutal-shadow-sm flex items-center gap-1">${i+1}. T <i data-lucide="check" class="w-3 h-3"></i></span>`;
+                } else {
+                    container.innerHTML += `<span class="bg-slate-800 text-slate-400 px-2 py-1 text-xs font-bold border-2 border-slate-700">${i+1}. T</span>`;
+                }
+            }
+            lucide.createIcons();
+        }
+
+        function resetVoting() {
+            scores = Array(NUM_TEAMS).fill(0);
+            hasVoted = Array(NUM_TEAMS).fill(false);
+            document.getElementById('winnerBanner').classList.add('hidden');
+            updateLeaderboard();
+            updateVotedBadges();
+        }
+
+        window.onload = () => {
+            initDropdowns();
+            updateLeaderboard();
+            updateVotedBadges();
+        };
+    </script>
+</body>
+</html>
