@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD5. ¿Dónde quiero vivir? - Aoiz 2030</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Librería para el confeti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: #0f172a;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .brutal-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(15, 23, 42, 1);
+        }
+        .brutal-shadow-sm {
+            box-shadow: 2px 2px 0px 0px rgba(15, 23, 42, 1);
+        }
+        .brutal-shadow:active, .brutal-shadow-sm:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(15, 23, 42, 1);
+        }
+        .paper-edge {
+            border-radius: 2px 15px 2px 15px;
+        }
+        .paper-edge-alt {
+            border-radius: 15px 2px 15px 2px;
+        }
+        .nav-button {
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        .nav-button.active {
+            border: 2px solid #0f172a;
+            border-bottom: 2px solid transparent;
+            transform: translateY(2px);
+            z-index: 10;
+        }
+        .rubric-table th, .rubric-table td {
+            border: 2px solid #0f172a;
+        }
+        /* Estilo para opciones deshabilitadas */
+        select option:disabled {
+            color: #94a3b8;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-cyan-400 border-b-4 border-slate-900 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 bg-white px-4 py-2 border-2 border-slate-900 brutal-shadow-sm">
+                <i data-lucide="zap" class="w-7 h-7 text-yellow-500 fill-yellow-500"></i>
+                <div>
+                    <h1 class="text-xl font-black tracking-widest uppercase text-slate-900">Aoiz 2030</h1>
+                    <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">UD5. ¿Dónde quiero vivir?</p>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="flex space-x-2 overflow-x-auto w-full md:w-auto pb-1 scrollbar-hide items-end mt-2 md:mt-0">
+                <button onclick="openTab('saioa1', this)" class="nav-button active bg-yellow-300 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-yellow-400">
+                    <div class="flex items-center gap-2"><i data-lucide="eye" class="w-4 h-4"></i> 1. El Problema</div>
+                </button>
+                <button onclick="openTab('saioa2', this)" class="nav-button bg-pink-300 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-pink-400">
+                    <div class="flex items-center gap-2"><i data-lucide="brush" class="w-4 h-4"></i> 2. Acción</div>
+                </button>
+                <button onclick="openTab('ebaluazioa', this)" class="nav-button bg-purple-300 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-purple-400">
+                    <div class="flex items-center gap-2"><i data-lucide="check-square" class="w-4 h-4"></i> Evaluación</div>
+                </button>
+                <button onclick="openTab('bozketa', this)" class="nav-button bg-orange-400 text-slate-900 px-5 py-2 rounded-t-lg font-black text-sm whitespace-nowrap hover:bg-orange-500">
+                    <div class="flex items-center gap-2"><i data-lucide="star" class="w-4 h-4"></i> Votación (Premios)</div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-10 w-full">
+
+        <!-- SESIÓN 1 -->
+        <section id="saioa1" class="tab-content active">
+            
+            <div class="text-center mb-12">
+                <div class="inline-block bg-slate-900 text-white px-4 py-1 font-black text-lg tracking-widest uppercase brutal-shadow-sm mb-4">¡Nuestro espacio público en peligro!</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-2 max-w-2xl mx-auto leading-tight">¿Qué está pasando en el entorno escolar de Aoiz? Lee las noticias.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- News Item 1 -->
+                <div class="bg-white border-2 border-slate-900 brutal-shadow p-6 paper-edge relative transition-transform hover:-translate-y-1">
+                    <div class="border-b-2 border-slate-900 pb-2 mb-4">
+                        <span class="font-black text-red-600 uppercase text-xs tracking-widest">Diario de Noticias | Iruñea</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 leading-tight uppercase text-slate-900">Aoiz tiene un problema de mal olor: víctimas de un 'reincidente' incívico</h3>
+                    <p class="text-lg font-bold bg-yellow-200 inline px-1">"El Ayuntamiento denuncia un acto 'insalubre y ofensivo'..."</p>
+                    <p class="text-slate-800 mt-4 font-medium leading-relaxed">El Ayuntamiento de Aoiz ha informado de un suceso desagradable: en los últimos días se han encontrado restos de excrementos humanos en un banco cercano al centro escolar de la localidad.</p>
+                    <div class="my-5 p-4 border-l-4 border-slate-900 bg-cyan-50 font-bold text-lg italic text-slate-700">
+                        “Cuidar los espacios públicos es responsabilidad de todos” - Ayuntamiento de Aoiz
+                    </div>
+                    <p class="text-slate-800 font-medium text-sm">El comunicado municipal no oculta su indignación ante lo que califica de comportamiento "incívico". Mientras tanto, el Ayuntamiento subraya que los bancos de la localidad están para sentarse, no para otras necesidades.</p>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="bg-white border-2 border-slate-900 brutal-shadow p-6 paper-edge-alt relative transition-transform hover:-translate-y-1">
+                    <div class="border-b-2 border-slate-900 pb-2 mb-4">
+                        <span class="font-black text-red-600 uppercase text-xs tracking-widest">Diario de Navarra | Aser Vidondo</span>
+                    </div>
+                    <!-- Foto Prensa -->
+                    <div class="w-full h-56 relative overflow-hidden border-2 border-slate-900 mb-4 bg-slate-200">
+                        <img src="https://imagenes.diariodenavarra.es/uploads/2025/10/21/68f7a00e0b9ae.jpeg" alt="Banco de Aoiz" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute bottom-2 right-2 bg-slate-900 text-white text-xs px-2 py-1 font-bold uppercase tracking-wider">#ElProblema</div>
+                    </div>
+                    <p class="text-slate-800 font-medium mb-4 leading-relaxed">El Ayuntamiento de Aoiz dice 'basta' ante un <strong class="bg-pink-200 px-1">comportamiento incívico y asqueroso</strong> ocurrido estos días en la zona escolar.</p>
+                    <p class="text-slate-800 font-medium text-sm">"Este hecho, además de insalubre y ofensivo, es una falta de respeto al entorno escolar y a todos los vecinos". El consistorio confirma que abrirá una investigación para identificar al responsable.</p>
+                </div>
+            </div>
+
+            <!-- Debate Section -->
+            <div class="bg-purple-100 border-2 border-slate-900 brutal-shadow p-8 mb-16 relative">
+                <div class="absolute -top-5 -right-5 bg-yellow-400 border-2 border-slate-900 w-12 h-12 rounded-full flex items-center justify-center brutal-shadow-sm z-10">
+                    <i data-lucide="message-circle" class="w-6 h-6 text-slate-900"></i>
+                </div>
+                <h3 class="text-2xl font-black mb-6 uppercase tracking-wider text-slate-900 border-b-2 border-slate-900 pb-2 inline-block">Debate de clase</h3>
+                
+                <div class="grid md:grid-cols-2 gap-4 mt-2">
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-purple-700 mb-2">1. ¿Por qué es una "falta de respeto"?</p>
+                        <p class="text-slate-700 font-medium text-sm">Más allá de la suciedad, ¿qué norma ética está rompiendo esta persona?</p>
+                    </div>
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-cyan-700 mb-2">2. ¿De quién es ese banco?</p>
+                        <p class="text-slate-700 font-medium text-sm">¿Del Ayuntamiento? ¿Del colegio? ¿De todos? ¿Qué significa "público"?</p>
+                    </div>
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-pink-700 mb-2">3. ¿A quién afecta esto?</p>
+                        <p class="text-slate-700 font-medium text-sm">Piensa con empatía: Niños/as, padres, personal de limpieza... ¿Cómo se sienten?</p>
+                    </div>
+                    <div class="bg-white border-2 border-slate-900 p-4 brutal-shadow-sm">
+                        <p class="font-black text-lg text-yellow-600 mb-2">4. ¿Qué podemos hacer nosotros?</p>
+                        <p class="text-slate-700 font-medium text-sm">Si el deber del ayuntamiento es sancionar, ¿cuál debe ser el nuestro para educar?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Section -->
+            <div class="bg-green-500 border-2 border-slate-900 brutal-shadow p-8 md:p-10 relative mt-8">
+                <div class="absolute -top-4 left-8 bg-white border-2 border-slate-900 px-4 py-1 font-black uppercase tracking-wider">
+                    Misión de hoy
+                </div>
+                
+                <h3 class="text-3xl font-black uppercase tracking-widest text-slate-900 mb-6 mt-4">Creación de una ONG</h3>
+                
+                <p class="text-slate-900 font-bold text-lg mb-6 bg-white p-3 border-2 border-slate-900 inline-block brutal-shadow-sm">
+                    En equipos cooperativos, crearéis un nuevo <strong>Grupo Ecologista Local</strong> en Aoiz.
+                </p>
+                
+                <div class="bg-yellow-50 border-2 border-slate-900 p-6 paper-edge">
+                    <h4 class="font-black text-xl mb-4 border-b-2 border-slate-900 pb-2 flex items-center gap-3">
+                        <i data-lucide="edit-3" class="text-red-500 w-5 h-5"></i> Informe del grupo (Completar en folio)
+                    </h4>
+                    
+                    <div class="space-y-4 font-medium text-slate-800">
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-900 text-white w-6 h-6 flex items-center justify-center font-black rounded-full shrink-0 text-sm mt-1">1</div>
+                            <div>
+                                <strong class="text-lg uppercase tracking-wide">Identidad:</strong> Inventad un nombre, boceto de logo, eslogan y datos de contacto falsos (email/teléfono).
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-900 text-white w-6 h-6 flex items-center justify-center font-black rounded-full shrink-0 text-sm mt-1">2</div>
+                            <div>
+                                <strong class="text-lg uppercase tracking-wide">Análisis ético:</strong> ¿Por qué es un problema social? Escribid por qué es importante cuidar el espacio público.
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="bg-slate-900 text-white w-6 h-6 flex items-center justify-center font-black rounded-full shrink-0 text-sm mt-1">3</div>
+                            <div>
+                                <strong class="text-lg uppercase tracking-wide">Nuestra solución:</strong> ¿Qué hará vuestra asociación para solucionar esto? ¡Sed creativos!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <span class="bg-slate-900 text-white font-bold tracking-widest uppercase px-6 py-3 border-2 border-slate-900 brutal-shadow-sm inline-block">
+                        Entregar este informe al profesor al final de la clase
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESIÓN 2 -->
+        <section id="saioa2" class="tab-content">
+             <div class="mb-12 text-center">
+                <div class="inline-block bg-pink-300 text-slate-900 px-4 py-1 font-black text-sm tracking-widest uppercase brutal-shadow-sm mb-4">Fase de creación</div>
+                <h2 class="text-4xl font-black text-slate-900 mb-4 uppercase tracking-tight">Manos a la obra</h2>
+                <p class="text-lg font-bold text-slate-600 max-w-2xl mx-auto">Es hora de coger las ideas de ayer y hacerlas realidad.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Instructions -->
+                <div class="lg:w-2/3">
+                    <div class="bg-white border-2 border-slate-900 brutal-shadow p-8 paper-edge-alt h-full">
+                        <h3 class="text-2xl font-black mb-6 text-slate-900 border-b-2 border-pink-400 pb-2 inline-block uppercase tracking-wider">Cartel Sensibilizador</h3>
+                        <p class="mb-6 font-medium text-slate-700">Debéis diseñar el cartel oficial de vuestra ONG. Elegid el formato:</p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                            <div class="bg-cyan-50 border-2 border-slate-900 p-6 text-center brutal-shadow-sm transition-transform hover:-translate-y-1 cursor-pointer">
+                                <i data-lucide="monitor" class="w-10 h-10 mx-auto text-cyan-600 mb-3"></i>
+                                <h4 class="font-black text-lg uppercase tracking-wider">Digital</h4>
+                                <p class="font-medium text-slate-600 mt-2 text-sm">Diseñado con Canva o Google Slides.</p>
+                            </div>
+                            <div class="bg-orange-50 border-2 border-slate-900 p-6 text-center brutal-shadow-sm transition-transform hover:-translate-y-1 cursor-pointer">
+                                <i data-lucide="scissors" class="w-10 h-10 mx-auto text-orange-600 mb-3"></i>
+                                <h4 class="font-black text-lg uppercase tracking-wider">A mano</h4>
+                                <p class="font-medium text-slate-600 mt-2 text-sm">Usando cartulinas, rotuladores y fotos.</p>
+                            </div>
+                        </div>
+
+                        <h4 class="font-black text-xl mb-4 bg-yellow-300 inline-block px-2 border-2 border-slate-900">Qué debe incluir el cartel:</h4>
+                        <ul class="space-y-3 font-medium pl-2 text-slate-800">
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Vuestra marca:</strong> Nombre y logo.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Eslogan:</strong> Lema principal, en letras grandes.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Contexto:</strong> Mención o imagen de la noticia.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Solución:</strong> Un mensaje ético dirigido a la ciudadanía.</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="bg-slate-900 text-white p-1 rounded-sm"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span><strong>Contacto:</strong> En la parte inferior, email/teléfono.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Submission Box -->
+                <div class="lg:w-1/3 flex flex-col gap-6">
+                    <div class="bg-yellow-300 border-2 border-slate-900 brutal-shadow p-6">
+                        <div class="flex items-center justify-between mb-4 border-b-2 border-slate-900 pb-2">
+                            <h4 class="font-black text-xl uppercase tracking-wider">Para entregar</h4>
+                            <i data-lucide="upload" class="w-6 h-6"></i>
+                        </div>
+                        <p class="font-bold mb-4 text-sm text-slate-800">Entregar al final de la clase para evaluar:</p>
+                        <ul class="font-medium space-y-3 mb-2 bg-white border-2 border-slate-900 p-4 text-sm">
+                            <li><span class="font-black text-cyan-700 uppercase">Digital:</span> Subir a Google Classroom.</li>
+                            <li><span class="font-black text-orange-700 uppercase">Físico:</span> Entregar en mano al profesor/a.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900 text-white border-2 border-slate-900 brutal-shadow p-6 relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 opacity-10">
+                            <i data-lucide="star" class="w-32 h-32 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <h4 class="font-black text-xl mb-3 text-yellow-400 uppercase tracking-wider relative z-10">Trabajos premiados</h4>
+                        <p class="font-medium text-sm text-slate-300 relative z-10 leading-relaxed">Los 3 mejores carteles tendrán premio en la nota final:<br><br>🥇 <strong class="text-yellow-400">+1 punto</strong><br>🥈 <strong class="text-slate-300">+0.5 puntos</strong><br>🥉 <strong class="text-orange-400">+0.25 puntos</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVALUACIÓN -->
+        <section id="ebaluazioa" class="tab-content">
+            <div class="mb-10 text-center">
+                <div class="inline-block bg-purple-200 text-purple-900 px-4 py-1 font-black text-sm tracking-widest uppercase brutal-shadow-sm mb-4">Rúbrica</div>
+                <h2 class="text-4xl font-black text-slate-900 mb-2 uppercase tracking-tight">¿Cómo conseguir un sobresaliente?</h2>
+            </div>
+
+            <!-- Context Info -->
+            <div class="flex flex-col md:flex-row gap-6 mb-8">
+                <div class="bg-white border-2 border-slate-900 brutal-shadow-sm p-5 flex-1">
+                    <h4 class="font-black text-lg text-purple-700 mb-2 uppercase tracking-wider border-b-2 border-purple-200 inline-block">Criterios (LOMLOE)</h4>
+                    <p class="font-medium text-slate-700 mt-2 text-sm leading-relaxed grid grid-cols-2 gap-x-2">
+                        <span><strong class="text-purple-900">1.1:</strong> Reflexión ética.</span>
+                        <span><strong class="text-purple-900">1.2:</strong> Empatía y comprensión.</span>
+                        <span><strong class="text-purple-900">2.1:</strong> Ciudadanía activa.</span>
+                        <span><strong class="text-purple-900">2.2:</strong> Resolución de conflictos.</span>
+                        <span><strong class="text-purple-900">3.3:</strong> Cuidado del espacio público.</span>
+                        <span><strong class="text-purple-900">4.1:</strong> Atención al entorno.</span>
+                    </p>
+                </div>
+                <div class="bg-white border-2 border-slate-900 brutal-shadow-sm p-5 flex-1">
+                    <h4 class="font-black text-lg text-cyan-700 mb-2 uppercase tracking-wider border-b-2 border-cyan-200 inline-block">Competencias</h4>
+                    <p class="font-medium text-slate-700 mt-2 text-sm leading-relaxed">
+                        <strong class="text-cyan-900">CCL1/2:</strong> Crear mensajes claros.<br>
+                        <strong class="text-cyan-900">CPSAA3.1:</strong> Trabajo en equipo.<br>
+                        <strong class="text-cyan-900">CCEC3:</strong> Creatividad y expresión artística.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Scroll hint for mobile -->
+            <div class="md:hidden text-xs text-slate-500 font-bold uppercase tracking-wider mb-2 flex items-center gap-1">
+                <i data-lucide="arrow-left-right" class="w-4 h-4"></i> Desliza para ver toda la tabla
+            </div>
+
+            <!-- Rubric Table -->
+            <div class="bg-white border-2 border-slate-900 brutal-shadow overflow-x-auto">
+                <table class="w-full text-left border-collapse rubric-table min-w-[800px]">
+                    <thead>
+                        <tr>
+                            <th class="p-4 bg-slate-100 font-black text-sm uppercase tracking-wider w-1/5">¿Qué se evalúa?</th>
+                            <th class="p-4 text-center bg-cyan-300 font-black text-sm uppercase tracking-wider">Exc (4)</th>
+                            <th class="p-4 text-center bg-green-300 font-black text-sm uppercase tracking-wider">Muy Bien (3)</th>
+                            <th class="p-4 text-center bg-yellow-300 font-black text-sm uppercase tracking-wider">Bien (2)</th>
+                            <th class="p-4 text-center bg-red-300 font-black text-sm uppercase tracking-wider">Mejorable (1)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-medium text-sm text-slate-800">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Análisis ético del problema</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(Criterio 1.1)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Identifican las raíces éticas del problema de forma muy profunda y razonada.</td>
+                            <td class="p-4">Identifican bien el problema desde un punto de vista ético, pero falta algo de profundidad.</td>
+                            <td class="p-4">Tratan el problema como si fuera simple suciedad o una falta de normas.</td>
+                            <td class="p-4">No han identificado ni comprendido la dimensión ética del problema.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Empatía y comprensión</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(Criterio 1.2)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Comprenden y reflejan muy bien los sentimientos de todos los implicados (alumnos, vecinos, limpieza).</td>
+                            <td class="p-4">Muestran empatía, pero se centran solo en un grupo específico de personas.</td>
+                            <td class="p-4">Mencionan el punto de vista y las emociones de los demás de forma muy superficial.</td>
+                            <td class="p-4">No hay empatía o solo tienen en cuenta un único punto de vista.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Ciudadanía activa</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(Criterio 2.1)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Proponen un plan de acción muy claro, viable y creativo para el Ayuntamiento o los vecinos.</td>
+                            <td class="p-4">La propuesta es adecuada, pero no está totalmente desarrollada o es bastante común.</td>
+                            <td class="p-4">La propuesta es muy vaga o no impulsa claramente la participación activa.</td>
+                            <td class="p-4">No hay una propuesta o plan de acción concreto para afrontar el problema.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Resolución ética de conflictos</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(Criterio 2.2)</span>
+                            </td>
+                            <td class="p-4 font-semibold">La solución busca la educación, el respeto y el diálogo, más allá del simple castigo.</td>
+                            <td class="p-4">La solución tiene un buen objetivo, pero tiende un poco hacia medidas sancionadoras.</td>
+                            <td class="p-4">La solución se basa casi totalmente en castigos o multas, sin trabajar valores.</td>
+                            <td class="p-4">La solución propuesta no resuelve el conflicto de forma ética o pacífica.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Cuidado del espacio público</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(Criterio 3.3)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Promueven directa y claramente con su mensaje el cuidado del espacio público y el bien común.</td>
+                            <td class="p-4">Se menciona la idea de espacio público, pero no es el mensaje principal de la campaña.</td>
+                            <td class="p-4">Tratan el espacio público como si fuera "del ayuntamiento", no "de todos".</td>
+                            <td class="p-4">No se promueve el cuidado del espacio público o de los bienes comunes.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50">
+                                <span class="font-bold">Creatividad y formato</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(CCEC3, CCL1/2)</span>
+                            </td>
+                            <td class="p-4 font-semibold">Gran impacto visual. Logo, eslogan y diseño excelentes. Sin faltas de ortografía.</td>
+                            <td class="p-4">El cartel está ordenado y tiene todos los elementos. Muestra algo de creatividad. Texto correcto.</td>
+                            <td class="p-4">Falta algún elemento. El diseño parece hecho con prisas. Tienen faltas de ortografía.</td>
+                            <td class="p-4">El cartel es muy simple, está incompleto o el mensaje es ininteligible.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 bg-slate-50 border-b-2 border-slate-900">
+                                <span class="font-bold">Trabajo en equipo y actitud</span><br>
+                                <span class="text-xs text-slate-500 font-bold tracking-wide">(CPSAA3.1)</span>
+                            </td>
+                            <td class="p-4 font-semibold border-b-2 border-slate-900">Todos han participado activamente. Han trabajado con total autonomía y respeto.</td>
+                            <td class="p-4 border-b-2 border-slate-900">La mayoría ha participado. Han respetado el clima de clase mientras trabajaban.</td>
+                            <td class="p-4 border-b-2 border-slate-900">Ha habido desequilibrios en el equipo, o el profesor ha tenido que llamarles la atención.</td>
+                            <td class="p-4 border-b-2 border-slate-900">Ha habido conflictos en el equipo o no han aprovechado el tiempo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- VOTACIÓN -->
+        <section id="bozketa" class="tab-content">
+            <div class="mb-10 text-center">
+                <h2 class="text-4xl font-black text-slate-900 mb-4 uppercase tracking-tight">Votación de Proyectos</h2>
+                <div class="bg-white border-2 border-slate-900 p-3 inline-block brutal-shadow-sm mt-2">
+                    <p class="text-lg font-bold text-slate-800 uppercase tracking-wider flex items-center justify-center gap-2">
+                        <i data-lucide="award" class="w-5 h-5 text-yellow-500"></i> ¡Hay 3 premios en juego: +1, +0.5 y +0.25! <i data-lucide="award" class="w-5 h-5 text-yellow-500"></i>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Voting Form -->
+                <div class="bg-white border-2 border-slate-900 brutal-shadow p-8 relative paper-edge z-10">
+                    <h3 class="text-2xl font-black mb-8 uppercase tracking-wider text-slate-900 border-b-2 border-slate-900 pb-2 flex items-center gap-3">
+                        <i data-lucide="vote" class="w-6 h-6 text-orange-500"></i> Emitir votos
+                    </h3>
+                    
+                    <!-- Error Message Box -->
+                    <div id="voteError" class="hidden bg-red-100 border-2 border-red-500 text-red-800 p-4 mb-6 brutal-shadow-sm" role="alert">
+                        <p class="font-black uppercase text-sm flex items-center gap-2"><i data-lucide="alert-circle" class="w-4 h-4"></i> ¡Problema con los votos!</p>
+                        <p id="voteErrorMessage" class="font-medium mt-1 text-sm"></p>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Who is voting -->
+                        <div class="bg-slate-50 border-2 border-slate-200 p-4">
+                            <label class="block text-sm font-black uppercase tracking-wider text-slate-900 mb-2">¿Qué equipo sois vosotros?</label>
+                            <select id="voterTeam" class="w-full p-3 border-2 border-slate-900 bg-white font-bold text-slate-800 cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                <!-- Llenado por JS -->
+                            </select>
+                        </div>
+
+                        <!-- 10 Points -->
+                        <div class="flex items-center gap-4 p-4 bg-yellow-100 border-2 border-slate-900 brutal-shadow-sm">
+                            <div class="bg-slate-900 text-yellow-300 font-black w-12 h-12 flex items-center justify-center text-xl shrink-0 border-2 border-white">10</div>
+                            <div class="flex-grow">
+                                <label class="block text-xs font-black uppercase tracking-wider text-slate-900 mb-1">Puntos (🥇 Al mejor)</label>
+                                <select id="vote10" class="w-full p-2 border-2 border-slate-900 bg-white font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                    <!-- Llenado por JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 8 Points -->
+                        <div class="flex items-center gap-4 p-4 bg-slate-200 border-2 border-slate-900 brutal-shadow-sm">
+                            <div class="bg-slate-900 text-slate-300 font-black w-12 h-12 flex items-center justify-center text-xl shrink-0 border-2 border-white">8</div>
+                            <div class="flex-grow">
+                                <label class="block text-xs font-black uppercase tracking-wider text-slate-900 mb-1">Puntos (🥈 Al segundo)</label>
+                                <select id="vote8" class="w-full p-2 border-2 border-slate-900 bg-white font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                    <!-- Llenado por JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 4 Points -->
+                        <div class="flex items-center gap-4 p-4 bg-orange-100 border-2 border-slate-900 brutal-shadow-sm">
+                            <div class="bg-slate-900 text-orange-300 font-black w-12 h-12 flex items-center justify-center text-xl shrink-0 border-2 border-white">4</div>
+                            <div class="flex-grow">
+                                <label class="block text-xs font-black uppercase tracking-wider text-slate-900 mb-1">Puntos (🥉 Al tercero)</label>
+                                <select id="vote4" class="w-full p-2 border-2 border-slate-900 bg-white font-bold text-sm cursor-pointer outline-none focus:ring-2 focus:ring-slate-900">
+                                    <!-- Llenado por JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <button onclick="castVote()" class="w-full bg-slate-900 hover:bg-slate-800 text-white border-2 border-slate-900 font-black py-4 px-6 text-lg uppercase tracking-widest transition-colors brutal-shadow-sm mt-2 flex justify-center items-center gap-3">
+                            Enviar votos <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="bg-slate-900 border-2 border-slate-900 brutal-shadow p-8 font-sans text-white relative paper-edge-alt">
+                    
+                    <!-- Winner Banner -->
+                    <div id="winnerBanner" class="hidden absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-slate-900 border-2 border-slate-900 py-2 px-6 font-black uppercase text-sm tracking-widest text-center brutal-shadow-sm z-20 whitespace-nowrap">
+                        🏆 🥇 <span id="winnerText1"></span> | 🥈 <span id="winnerText2"></span> | 🥉 <span id="winnerText3"></span> 🏆
+                    </div>
+
+                    <h3 class="text-2xl font-black mb-8 uppercase tracking-wider text-yellow-400 border-b-2 border-yellow-400 pb-2 flex items-center gap-3 relative z-10">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6"></i> Clasificación
+                    </h3>
+                    
+                    <div class="space-y-4 relative z-10 font-bold" id="leaderboardContainer">
+                        <!-- Leaderboard items injected by JS -->
+                    </div>
+                    
+                    <div class="mt-10 pt-6 border-t-2 border-slate-800 text-center relative z-10">
+                        <p class="text-slate-400 font-black uppercase mb-3 text-xs tracking-widest">Equipos que han votado:</p>
+                        <div class="flex justify-center gap-2 flex-wrap" id="votedBadges">
+                            <!-- Badges injected by JS -->
+                        </div>
+                        <button onclick="resetVoting()" class="mt-8 text-xs font-bold text-red-400 hover:text-red-300 uppercase tracking-widest border-b border-transparent hover:border-red-400 transition-colors">
+                            <i data-lucide="trash-2" class="w-3 h-3 inline-block"></i> Reiniciar votación
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-8 text-center mt-auto border-t-4 border-cyan-400">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="font-black uppercase tracking-widest text-sm">&copy; 2026 Valores Éticos y Cívicos</p>
+            <p class="text-xs mt-2 text-slate-400 font-bold tracking-wider uppercase">ESO 1 - Instituto de Aoiz</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Tab switching logic
+        function openTab(tabName, buttonElement) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'border-slate-900', 'border-transparent');
+                btn.style.border = '2px solid transparent';
+                btn.style.transform = 'translateY(0)';
+            });
+
+            document.getElementById(tabName).classList.add('active');
+
+            buttonElement.classList.add('active');
+            buttonElement.style.border = '2px solid #0f172a';
+            buttonElement.style.borderBottom = '2px solid transparent';
+            buttonElement.style.transform = 'translateY(2px)';
+        }
+
+        // --- VOTING SYSTEM LOGIC ---
+        const NUM_TEAMS = 7;
+        let scores = Array(NUM_TEAMS).fill(0);
+        let hasVoted = Array(NUM_TEAMS).fill(false);
+        let confettiFired = false;
+        
+        function loadData() {
+            const savedScores = localStorage.getItem('aoiz_scores');
+            const savedVotes = localStorage.getItem('aoiz_hasVoted');
+            if (savedScores && savedVotes) {
+                scores = JSON.parse(savedScores);
+                hasVoted = JSON.parse(savedVotes);
+            }
+        }
+
+        function saveData() {
+            localStorage.setItem('aoiz_scores', JSON.stringify(scores));
+            localStorage.setItem('aoiz_hasVoted', JSON.stringify(hasVoted));
+        }
+
+        function updateSelectOptions() {
+            // Actualizar opciones del equipo votante (ocultar los que ya votaron)
+            const voterSelect = document.getElementById('voterTeam');
+            const currentVoter = voterSelect.value;
+            voterSelect.innerHTML = '<option value="">-- Elegid vuestro equipo --</option>';
+            for (let i = 1; i <= NUM_TEAMS; i++) {
+                if (!hasVoted[i-1] || i.toString() === currentVoter) {
+                    voterSelect.innerHTML += `<option value="${i}">Equipo ${i}</option>`;
+                }
+            }
+            voterSelect.value = currentVoter;
+
+            // Actualizar selectores de puntos (Deshabilitar equipos ya seleccionados en otro lado)
+            const selectsInfo = [
+                { id: 'vote10', text: '-- ¿A quién 10 puntos? --' },
+                { id: 'vote8', text: '-- ¿A quién 8 puntos? --' },
+                { id: 'vote4', text: '-- ¿A quién 4 puntos? --' }
+            ];
+
+            const v10 = document.getElementById('vote10').value;
+            const v8 = document.getElementById('vote8').value;
+            const v4 = document.getElementById('vote4').value;
+            const selectedValues = [v10, v8, v4].filter(v => v !== "");
+
+            selectsInfo.forEach(info => {
+                const el = document.getElementById(info.id);
+                const currentVal = el.value;
+                el.innerHTML = `<option value="">${info.text}</option>`;
+                
+                for (let i = 1; i <= NUM_TEAMS; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.text = `Equipo ${i}`;
+                    
+                    // Si el equipo está seleccionado en OTRO desplegable, lo deshabilitamos
+                    if (selectedValues.includes(i.toString()) && i.toString() !== currentVal) {
+                        option.disabled = true;
+                    }
+                    el.add(option);
+                }
+                el.value = currentVal;
+            });
+        }
+
+        // Event listeners para actualizar dinámicamente los selects
+        ['vote10', 'vote8', 'vote4'].forEach(id => {
+            document.getElementById(id).addEventListener('change', updateSelectOptions);
+        });
+
+        function showError(msg) {
+            const errorBox = document.getElementById('voteError');
+            const errorMsg = document.getElementById('voteErrorMessage');
+            errorMsg.innerText = msg;
+            errorBox.classList.remove('hidden');
+            setTimeout(() => {
+                errorBox.classList.add('hidden');
+            }, 5000);
+        }
+
+        function triggerConfetti() {
+            if (confettiFired) return;
+            confettiFired = true;
+            
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+
+        function castVote() {
+            const voter = parseInt(document.getElementById('voterTeam').value);
+            const v10 = parseInt(document.getElementById('vote10').value);
+            const v8 = parseInt(document.getElementById('vote8').value);
+            const v4 = parseInt(document.getElementById('vote4').value);
+
+            if (!voter || !v10 || !v8 || !v4) {
+                showError("Rellena todos los campos para votar.");
+                return;
+            }
+            if (hasVoted[voter - 1]) {
+                showError(`El Equipo ${voter} ya ha votado.`);
+                return;
+            }
+            if (v10 === voter || v8 === voter || v4 === voter) {
+                showError("No podéis votaros a vosotros mismos.");
+                return;
+            }
+
+            scores[v10 - 1] += 10;
+            scores[v8 - 1] += 8;
+            scores[v4 - 1] += 4;
+            hasVoted[voter - 1] = true;
+
+            saveData(); // Guardar en LocalStorage
+            updateLeaderboard();
+            updateVotedBadges();
+
+            document.getElementById('voterTeam').value = "";
+            document.getElementById('vote10').value = "";
+            document.getElementById('vote8').value = "";
+            document.getElementById('vote4').value = "";
+            updateSelectOptions(); // Refrescar listas
+            
+            const errorBox = document.getElementById('voteError');
+            errorBox.className = "bg-green-100 border-2 border-green-500 text-green-800 p-4 mb-6 brutal-shadow-sm";
+            errorBox.innerHTML = `<p class="font-black uppercase text-sm">¡Bien hecho!</p><p class="font-medium text-sm mt-1">Los votos del Equipo ${voter} han sido guardados.</p>`;
+            setTimeout(() => {
+                errorBox.classList.add('hidden');
+                setTimeout(() => {
+                    errorBox.className = "hidden bg-red-100 border-2 border-red-500 text-red-800 p-4 mb-6 brutal-shadow-sm";
+                    errorBox.innerHTML = `<p class="font-black uppercase text-sm flex items-center gap-2"><i data-lucide="alert-circle" class="w-4 h-4"></i> ¡Problema con los votos!</p><p id="voteErrorMessage" class="font-medium mt-1 text-sm"></p>`;
+                    lucide.createIcons();
+                }, 500);
+            }, 3000);
+        }
+
+        function updateLeaderboard() {
+            const container = document.getElementById('leaderboardContainer');
+            container.innerHTML = '';
+
+            let sortedTeams = [];
+            for (let i = 0; i < NUM_TEAMS; i++) {
+                sortedTeams.push({ id: i + 1, score: scores[i] });
+            }
+
+            sortedTeams.sort((a, b) => b.score - a.score);
+            const maxScore = sortedTeams[0].score > 0 ? sortedTeams[0].score : 1;
+            
+            const votingComplete = hasVoted.every(v => v === true);
+            const winnerBanner = document.getElementById('winnerBanner');
+            
+            if (votingComplete && sortedTeams[0].score > 0) {
+                document.getElementById('winnerText1').innerText = `Eq. ${sortedTeams[0].id}`;
+                document.getElementById('winnerText2').innerText = sortedTeams[1].score > 0 ? `Eq. ${sortedTeams[1].id}` : `-`;
+                document.getElementById('winnerText3').innerText = sortedTeams[2].score > 0 ? `Eq. ${sortedTeams[2].id}` : `-`;
+                
+                winnerBanner.classList.remove('hidden');
+                triggerConfetti();
+            } else {
+                winnerBanner.classList.add('hidden');
+                confettiFired = false;
+            }
+
+            sortedTeams.forEach((team, index) => {
+                const widthPercent = (team.score / maxScore) * 100;
+                
+                let barColor = "bg-slate-600";
+                let badgeColor = "bg-slate-700 text-white border-slate-600";
+                let extraBadge = "";
+                
+                if (index === 0 && team.score > 0) { 
+                    barColor = "bg-yellow-400"; 
+                    badgeColor = "bg-yellow-400 text-slate-900 border-white"; 
+                    if(votingComplete) extraBadge = `<span class="absolute -right-2 -top-2 bg-slate-900 text-yellow-400 text-[10px] px-1 py-0.5 border border-slate-900">+1!</span>`;
+                }
+                else if (index === 1 && team.score > 0) { 
+                    barColor = "bg-slate-300"; 
+                    badgeColor = "bg-slate-300 text-slate-900 border-white"; 
+                    if(votingComplete) extraBadge = `<span class="absolute -right-2 -top-2 bg-slate-900 text-white text-[10px] px-1 py-0.5 border border-slate-900">+0.5!</span>`;
+                }
+                else if (index === 2 && team.score > 0) { 
+                    barColor = "bg-orange-400"; 
+                    badgeColor = "bg-orange-400 text-slate-900 border-white"; 
+                    if(votingComplete) extraBadge = `<span class="absolute -right-2 -top-2 bg-slate-900 text-orange-400 text-[10px] px-1 py-0.5 border border-slate-900">+0.25!</span>`;
+                }
+
+                const html = `
+                    <div class="flex items-center gap-3 relative">
+                        <div class="w-6 text-right font-black text-slate-500">${index + 1}.</div>
+                        <div class="w-20 font-black text-xs uppercase tracking-wider">Equipo ${team.id}</div>
+                        <div class="flex-grow bg-slate-800 border-2 border-slate-700 h-5 p-0.5">
+                            <div class="${barColor} h-full transition-all duration-1000" style="width: ${team.score === 0 ? '0' : Math.max(widthPercent, 2)}%"></div>
+                        </div>
+                        <div class="${badgeColor} w-10 h-8 flex items-center justify-center border-2 font-black text-sm brutal-shadow-sm relative transition-colors duration-500">
+                            ${team.score}
+                            ${extraBadge}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function updateVotedBadges() {
+            const container = document.getElementById('votedBadges');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < NUM_TEAMS; i++) {
+                if (hasVoted[i]) {
+                    container.innerHTML += `<span class="bg-cyan-400 text-slate-900 px-2 py-1 text-xs font-black border-2 border-slate-900 brutal-shadow-sm flex items-center gap-1">E ${i+1} <i data-lucide="check" class="w-3 h-3"></i></span>`;
+                } else {
+                    container.innerHTML += `<span class="bg-slate-800 text-slate-400 px-2 py-1 text-xs font-bold border-2 border-slate-700">E ${i+1}</span>`;
+                }
+            }
+            lucide.createIcons();
+        }
+
+        function resetVoting() {
+            if (confirm("⚠️ ¿Estás seguro de que quieres borrar todos los votos y reiniciar la clasificación? Esta acción no se puede deshacer.")) {
+                scores = Array(NUM_TEAMS).fill(0);
+                hasVoted = Array(NUM_TEAMS).fill(false);
+                confettiFired = false;
+                
+                localStorage.removeItem('aoiz_scores');
+                localStorage.removeItem('aoiz_hasVoted');
+                
+                document.getElementById('winnerBanner').classList.add('hidden');
+                updateSelectOptions();
+                updateLeaderboard();
+                updateVotedBadges();
+            }
+        }
+
+        window.onload = () => {
+            loadData(); // Cargar datos previos si existen
+            updateSelectOptions(); // Inicializar desplegables dinámicos
+            updateLeaderboard();
+            updateVotedBadges();
+        };
+    </script>
+</body>
+</html>
